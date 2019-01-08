@@ -1,0 +1,26 @@
+How about a nice Game of BlackJack?
+
+using lists [] define a list of suits ("hearts", "spades" etc) and a list of cards ['Ace', "King", "Queen", ..."3", "2", "1"]
+
+using two loop, one inside the other, create another list that has all the playing cards in a deck:
+# initialize the list of cards:
+cards=[]
+loop of the suits:
+   loop of the cards:
+     cards.append( xxx ) # note: append is a built-in function of lists
+
+# now, with the new list of 52 playing cards:
+use the rand() function to shuffle the deck. eg. cards[23]
+
+ the computer is the dealer:
+select the next 2 cards from the top of the deck.
+tell the user what they are.
+ask the user if they want to stay or draw.
+if they want to draw, give the user another card.
+   if the user's total is over 21, they lose, so start again.
+  keep asking until the user says to stay.
+the computer selects the next 2 cards from the deck and shows them.
+ If the user's total is closer to 21 than the computer's, the user wins.
+else the user loses. Keep track of how many wins and losses the user gets.
+
+212-444-2789
