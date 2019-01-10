@@ -1,7 +1,7 @@
 # Personclass.py
 
 class Person:
-    def __init__(self,name=' ',address=' ',phone='',email=''):
+    def __init__(self,name='',address='',phone='',email=''):
         self.name = name
         self.address = address
         self.phone = phone
@@ -23,20 +23,20 @@ Bob.hello()
 
 #make a list of the People objects:
 people=[Bob,Sally]
-
-#write the name and emails of the people to a csv file for Excel:
-e=open('/media/dave/PSY31170/emaillist.csv','w') #open the file
-for member in people:
-    # construct the text line for each member:
-    # put the attributes in quotes separated by a comma,
-    # like this: "Dave","dave@gmail"
-    # add a newline at the end so each entry is on a new line
-    l='"' + member.name + '"' + ',"' +member.email+ '"\n'
-    e.writelines(l)
-e.close()
+drive='/media/dave/PSY31170/'
+###write the name and emails of the people to a csv file for Excel:
+##e=open(drive+'emaillist.csv','w') #open the file
+##for member in people:
+##    # construct the text line for each member:
+##    # put the attributes in quotes separated by a comma,
+##    # like this: "Dave","dave@gmail"
+##    # add a newline at the end so each entry is on a new line
+##    l='"' + member.name + '"' + ',"' +member.email+ '"\n'
+##    e.writelines(l)
+##e.close()
 
 # now read the file and see what it looks like:
-e=open('/media/dave/PSY31170/emaillist.csv','r')
+e=open(drive+'emaillist.csv','r')
 print("......\nread one line at a time and print it:")
 print("each entry has a newline at the end, and the print function adds another one.")
 for l in e: #e is a file object, so this reads the file one line at a time
@@ -45,7 +45,7 @@ e.close() # close the file to keep the operating system happy
       
 # or
 print ("------\nthe whole file as a list:")
-e=open('/media/dave/PSY31170/emaillist.csv','r') # notice 'r' for read, not 'w' for write
+e=open(drive+'emaillist.csv','r') # notice 'r' for read, not 'w' for write
 emails=e.readlines() # gets all the lines into memory, for small files
 print (emails)
       
@@ -57,8 +57,8 @@ for l1 in emails: # each l1 is one line
 e.close() # close the file to keep the operating system happy    
 
 # let's read the file in as a python dictionary, so we can look up entries by name
-e=open('/media/dave/PSY31170/emaillist.csv','r')
-peopledict = {} # initialize an empty dictionary
+e=open(drive+'emaillist.csv','r')
+peopledict = {} # initialize an empty dictionary key:value pairs
 for p in e:
     # each p is one line from the excel format csv filefile
     # so it is a text string of a list of attribute values:
@@ -72,6 +72,7 @@ for p in e:
     print('The full read-in entry text line is now a list of',len(pvals),'items long')
     # now put the entry into the dictionary:
     peopledict[pvals[0]] = pvals[1] #pvals[0] is the name, pvals[1] is the email
+    # to add to a dict: dictname[key] = value
 e.close()
 
 # now see what we have in the dictionary peopledict:
@@ -100,5 +101,48 @@ while n == '':
 
 
 """
+
+# loop to ask user for name,email,addr,phone
+    fields=['name','email','addr','phone]
+    data={} #use a dictionary to store the new data
+    for field in fields:
+        data[field]=input("enter the next "+field)
+    # now data[fieldname] returns the value that was entered
+
+# ask user for Person to look up in dictionary of persons:
+    persons = readthepeoplefile(filename) # need to write this function
+        #to define the dictionary of persons
+    while True: # do loop until we hit a break command
+        pname = input('enter the name of the person to find:')
+        pdata = persons[pname] # what if the name is not found? then
+            #python "throws" an Exception  - error message, so use try-except:
+        try:
+            pdata = persons[pname]
+        except: # if pname not found catch the error here
+            # not found should we add it?
+            addnew = input(pname+' not found. Add as new (Y/N)?')
+            if addnew in 'Yy' : #add new person
+                persons[pname] = [pname] # first field is name (the key)
+            else:
+                continue # go to begining of while loop
+        # if here, we need to show the data for this person, and ask if the
+        # user wants to change anything
+    def editfields (pname,persons,fields):
+        print('Here is the current data for ',pname)
+        fieldnum = 0 # position of field in the fieldlist
+        for field in fields:
+            fieldnum +=1
+            print(fieldnum,'. 'field, persons.field)
+        editfield=input("Enter the field number to change (0 to end).")
+        efield=int(editfield)
+        if efield >0 and efield < len(fields)+1:
+            print('current value of',fields[efield], 'is ',\
+                  persons[pname][fields[efield]])
+            newdat=input('Enter new data or leave empty to leave unchanged')
+            if len(newdat) > 0:
+                 persons[pname][fields[efield]]) = newdat
+            
+            
     
+            
     
