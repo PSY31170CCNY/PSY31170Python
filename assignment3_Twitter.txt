@@ -14,8 +14,16 @@ look for "U.S." in the location.
    a. list each location and the number of tweets from each location
 5. sort the tweets by username. list the users with more than one tweet.
 
+Use the "try - except" structure to catch errors in the data
+to ignore or otherwise process:
 
-
+for tweettext in alltext:
+    try:
+        x=tweettext.find('asdf')
+        print('asdf is at position',x)
+    except e=Exception():
+        print("oops! non-valid character found",e.message)
+        continue
 
 
 """
