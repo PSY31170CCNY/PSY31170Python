@@ -1,0 +1,21 @@
+"""
+Assignment 3: Twitter processing
+
+1. read in the csv file "saved_tweets.csv" as a list of fields
+Each field is either a list or a text string
+
+2. ask the user to enter a text string to search for, and
+a field to look in. e.g. look for "python" in the Tweet text or
+look for "U.S." in the location.
+
+3. display all the tweets that contain the requested string.
+
+4. sort the list of tweets by location, alphabetically
+   a. list each location and the number of tweets from each location
+5. sort the tweets by username. list the users with more than one tweet.
+
+
+
+
+
+"""
