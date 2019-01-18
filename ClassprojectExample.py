@@ -1,5 +1,5 @@
 # classproject.py
-# this is an analysis fo the NYC restaurant inspection data
+# this is an analysis of the NYC restaurant inspection data
 # found in this file:
 # DOHMH_New_York_City_Restaurant_Inspection_Results.csv
 # downloaded from https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j
@@ -58,6 +58,29 @@ datafile = "DOHMH_New_York_City_Restaurant_Inspection_Results.csv"
 with open(datafile, newline='') as csvfile:
     datareader = csv.reader(csvfile,delimiter = ' ', quotechar='|')
     for row in datareader:
+        # skip this row unless this is a Mexican or Chinese restaurant
+        lc = row[cuisine].lowercase() # convert cuisine to lowercase to be sure case doesn't matter
+        if not(('chinese' in lc) or ('mexican' in lc)): # separate booleans with parens to avoid confusion
+            continue # to next row
         # here we have to know the positions in the list of fields
-        # of the data values we want to use:
-        r = Restaurant(r[
+        # of the data values we want to use to create a Restaurant object, so
+        # we can use the column number variables we defined earlier:
+        r = Restaurant(row[name],row[UID],row[cuisine],' '.join(row[bldg],row[street]),\
+                       row[borough],row[grade],row[idate])
+        # put the restaurant object r into the right dictionary:
+        if lc in 'chinese':
+            Chinese[row[UID]]=r
+        else:
+            Mexican[row[UID]]=r
+# now we have dictionaries of all the Mexican and Chinese restaurant inspections
+# Let's see how many there are:
+Mexcount = len(Mexican)
+Chicount= len(Chinese)
+# let's get the keys to make it easy to interate through the dictionaries:
+mexkeys=Mexican.keys()
+chikeys=Chinese.keys()
+# let's see how many of each grade the two restaurant types received:
+def gradecount(re):
+    #return a dict of grades with counts eg{'A':100,'B':35}
+    
+        
