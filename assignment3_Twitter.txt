@@ -1,7 +1,7 @@
 """
 Assignment 3: Twitter processing
 
-1. read in the csv file "saved_tweets.csv" as a list of fields
+1. read in the csv file "saved_tweetsTrump.csv" as a list of fields
 Each field is either a list or a text string
 
 2. ask the user to enter a text string to search for, and
