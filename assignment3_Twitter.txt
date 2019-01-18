@@ -11,8 +11,11 @@ look for "U.S." in the location.
 3. display all the tweets that contain the requested string.
 
 4. sort the list of tweets by location, alphabetically
-   a. list each location and the number of tweets from each location
-5. sort the tweets by username. list the users with more than one tweet.
+    a. list each location and the number of tweets from each location
+    b. sort the tweets by username. list the users with more than one tweet.
+    c. make a sorted list of hashtags that appear in the tweets, counting
+        how many times each hashtag appears, and what percent of the
+        tweets include this hashtag.
 
 Use the "try - except" structure to catch errors in the data
 to ignore or otherwise process:
@@ -21,10 +24,14 @@ for tweettext in alltext:
     try:
         x=tweettext.find('asdf')
         print('asdf is at position',x)
-    except Exception as e:
-        print("oops! error: ", str(e))
+    except Exception as e: # creates a variable e that holds the Exception object
+        print("oops! error: ", str(e)) # displays the error message from e
 	# do something to compensate for the error if possible
-        continue # go on to the next line
+        continue # then go on to the next line, don't keep processing
+
+    # if the try block worked, do whatever tweettext[x] needs to have done, e.g.
+    print('asdf appears at position ',x, ' in ',tweettext)
+    
 
 
 """
