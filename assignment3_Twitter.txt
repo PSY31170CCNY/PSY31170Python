@@ -21,9 +21,10 @@ for tweettext in alltext:
     try:
         x=tweettext.find('asdf')
         print('asdf is at position',x)
-    except e=Exception():
-        print("oops! non-valid character found",e.message)
-        continue
+    except Exception as e:
+        print("oops! error: ", str(e))
+	# do something to compensate for the error if possible
+        continue # go on to the next line
 
 
 """
