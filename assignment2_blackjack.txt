@@ -54,5 +54,11 @@ NOTE: there are additional complexities in the real world version of blackjack, 
 this assignment only uses these specified actions, so don't worry about the dealer
 drawing more cards. 
 
+NOTE: The code in blackjack.py (which we developed in class) may be used for this assignment, 
+but be very careful -- IT CONTAINS ERRORS IN LOGIC,as well as other errors. 
+You can use the code as examples of how to do some of the assignment, 
+but in the end it is YOUR code that needs to run correctly. Remember to put comments
+in for each section of your code to explain why and what the code does.
+
 
 
