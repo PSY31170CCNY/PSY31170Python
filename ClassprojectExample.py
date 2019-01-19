@@ -18,8 +18,9 @@ import csv # get the module
 # also downloaded 1/18/2019
 # the data fields are named in the first column, so these will be the order
 # they appear in each of the csv data rows. We can make variables to hold
-# the column numbers of the data fields we want to use:
-UID=0 # CAMIS field holds a unique id
+# the column numbers of the data fields we want to use, so we can refer to
+# them by name:
+uid=0 # CAMIS field holds a unique id (0 = first in a python list)
 name=1 # the DBA field "doing business as"
 borough=2 # BORO field has code numbers for the 5 boroughs
 bcodes = {'1':'Manhattan','2':'Bronx','3':'Brooklyn','4':'Queens',\
@@ -67,13 +68,13 @@ with open(datafile, newline='') as csvfile:
         # here we have to know the positions in the list of fields
         # of the data values we want to use to create a Restaurant object, so
         # we can use the column number variables we defined earlier:
-        r = Restaurant(row[name],row[UID],row[cuisine],' '.join([row[bldg],row[street]]),\
+        r = Restaurant(row[name],row[uid],row[cuisine],' '.join([row[bldg],row[street]]),\
                        row[borough],row[gradefield],row[idate])
         # put the restaurant object r into the right dictionary:
-        if lc in 'chinese':
-            Chinese[row[UID]]=r
+        if lc in 'chinese': #lc holds lowercase of cuisine value
+            Chinese[row[uid]]=r
         else:
-            Mexican[row[UID]]=r
+            Mexican[row[uid]]=r
 # now we have dictionaries of all the Mexican and Chinese restaurant inspections
 # Let's see how many there are:
 Mexcount = len(Mexican)
@@ -87,7 +88,7 @@ def gradecount(restdict,gradefield=14): # make a function to
     klist=restdict.keys()
     gradedict={}
     for r in klist:
-        row=restdict[r] # returns a Restaurant object
+        row=restdict[r] # returns a Restaurant object with the row's data
         grade=row.grade
         if grade in gradedict:
             gradedict[grade] += 1
