@@ -1,0 +1,58 @@
+How about a nice Game of BlackJack?
+
+Create a simplified simulation of playing blackjack( aka '21')
+
+1. using lists [],
+ define a list of suits ("hearts", "spades" etc) and 
+a list of cards ['Ace', "King", "Queen", ..."3", "2", "1"]
+
+using two loops, one inside the other, 
+create another list that has all the playing cards in a deck:
+# initialize the list of cards:
+cards=[]
+loop of the suits:
+   loop of the cards:
+     cards.append( xxx ) # note: append is a built-in function of lists
+
+# now, with the new list of 52 playing cards:
+import the random module's shuffle() function.
+use the shuffle() function to shuffle the deck.
+# simulate the playing sequence:
+
+1. the computer is the dealer:
+a. select the next 2 cards from the top of the deck.
+b. tell the user what they are.
+c. ask the user if they want to stay or draw.
+
+d. if they want to draw, give the user another card.
+   1) if the user's total is over 21, they lose, so start again.
+   2) keep asking until the user says to stay, or the user loses.
+
+e. after the users chooses to stay, the computer selects the next 2 cards from the deck
+   1) show the dealers selected cards (NOTE: in this simplified version, the dealer does
+      not draw any additional cards.)
+
+f. Calculate the score of the hands:
+   1) If the user's total is equal to 21 or closer to  21 than the computer's, the user wins.
+   2)The player loses automatically if they draw over 21, without even counting the dealer's hand.
+   3) Tell the user the outcome ('you won' or 'you lost')
+
+	Calculating the score of a hand:
+	1. Aces can be either 11 points or 1 point when the score of a hand is totalled, 
+	so whichever choice creates a higher score that is 21 or less is the value 
+	assigned to an Ace. (If more than one Ace is dealt, the earlier ones are 
+	designated as 1, and the last one can beii either 1 or 11.
+	2. Face cards are 10 points. 
+	3. The rest of the cards' scores are their face value.
+
+g. Keep track of how many wins and losses the user gets.
+
+h. the game ends when the entire deck has been drawn or if there are not enough cards
+to complete the current hand. 
+
+NOTE: there are additional complexities in the real world version of blackjack, but
+this assignment only uses these specified actions, so don't worry about the dealer
+drawing more cards. 
+
+
+
