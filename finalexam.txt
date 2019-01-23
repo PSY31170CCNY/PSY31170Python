@@ -37,7 +37,8 @@ function to read in a text file of values separated by commas?
 Demonstrate by writing a very short program to read in a csv file 
 named “data.csv” using the csv.reader() function.
 
-6. Debug this program so it runs correctly:
+6. Debug this program so it runs correctly, print out the resulting file 
+with at least 6 users' data and upload the file to your github Class folder:
 
 # finalexamproblem6.py
 # Asks user for their information and adds it to a text file 
